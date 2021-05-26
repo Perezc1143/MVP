@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require('express');
 const app = express();
 // const db = require('./db_config.js');
-const port = 3000;
+// const port = 3000;
 const { Pool } = require('pg')
 app.use(express.json())
 const bodyParser = require('body-parser');
@@ -10,9 +10,10 @@ app.use(bodyParser.json());
 
 
 const pool = new Pool({
-
-    database: 'dealership',
-    port: 5432
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
 
 app.use(express.static('public'))
@@ -125,8 +126,8 @@ app.delete('/vehicle/:id', (req,res) => {
 });
 
 //listening
-app.listen(port, () => {
-    console.log('listening on Port 3000');
+app.listen(process.env.PORT, () => {
+    console.log(`listening on {process.env.PORT}`);
 })
 module.exports = app;
     
