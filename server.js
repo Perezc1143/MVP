@@ -1,4 +1,4 @@
-require('dotenv').config() // TODO: ADD THIS LINE
+require('dotenv').config()
 const express = require('express');
 const app = express();
 // const db = require('./db_config.js');
@@ -15,26 +15,27 @@ const pool = new Pool({
     port: 5432
 });
 
-
-
 app.use(express.static('public'))
-app.get('/customer/:id',(req,res)=>{
-    const {id} = req.params;
-    pool.query('SELECT * FROM customer WHERE id=$1',[id],(err,data) => {
-        res.send(data.rows)
-    })
-})
-// app.get('/customer/:id', (req,res) => {
-//     const {customer_id} = req.params;
-//     pool.query('SELECT * FROM customer INNER JOIN vehicle ON vehicle.customer_id = customer_id WHERE customer_id=$1;', [customer_id], (err,data) => {
-//         if(err){
-//             res.status(404).send(err)
-//             console.log(err)
-//         }
-//         res.json(data)
+
+
+// app.get('/customer/:name',(req,res)=>{
+//     const {name} = req.params;
+//     pool.query('SELECT * FROM customer WHERE name=$1',[name],(err,data) => {
 //         res.send(data.rows)
 //     })
 // })
+app.get('/customer/:name', (req,res) => {
+    const customer_name = req.params.name
+    pool.query('SELECT * FROM customer JOIN vehicle ON vehicle.customer_id=customer.id WHERE name=$1;', [customer_name], (err,data) => {
+        if(err){
+            res.status(404).send(err)
+          
+        }else{
+            res.send(data.rows);
+        }
+    })
+});
+
 
 // adding a new customer
 app.post('/customer', (req,res) => {
