@@ -127,7 +127,7 @@ app.delete('/vehicle/:id', (req,res) => {
 
 //listening
 app.listen(process.env.PORT, () => {
-    console.log(`listening on {process.env.PORT}`);
+    console.log(`listening on ${process.env.PORT}`);
 })
 module.exports = app;
     
