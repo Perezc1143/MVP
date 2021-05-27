@@ -2,11 +2,11 @@ require('dotenv').config()
 const express = require('express');
 const app = express();
 // const db = require('./db_config.js');
-// const port = 3000;
 const { Pool } = require('pg')
 app.use(express.json())
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
+
 
 
 const pool = new Pool({
