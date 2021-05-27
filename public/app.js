@@ -25,17 +25,17 @@ $(document).ready(() => {
                   var h7 = $("<h7></h7>", {id: "card-title",text:year});
                   var h8 = $("<h8></h8>", {id: "card-title",text:under_warranty});
                   var h9 = $("<h9></h9>", {id: "card-title",text:mileage});
-                //   var resultCard = $("<div></div>", {class:"result-card"});
-                  h1.appendTo('.main');
-                  h2.appendTo('.main');
-                  h3.appendTo('.main');
-                  h4.appendTo('.main');
-                  h5.appendTo('.main');
-                  h6.appendTo('.main');
-                  h7.appendTo('.main');
-                  h8.appendTo('.main');
-                  h9.appendTo('.main');
-                  resultsContainer.append('.main')
+                var result = document.getElementsByClassName('main');
+                  h1.appendTo(result);
+                  h2.appendTo(result);
+                  h3.appendTo(result);
+                  h4.appendTo(result);
+                  h5.appendTo(result);
+                  h6.appendTo(result);
+                  h7.appendTo(result);
+                  h8.appendTo(result);
+                  h9.appendTo(result);
+                //   resultsContainer.append(result)
                 }
             })
             $(".results").empty();

@@ -14,19 +14,24 @@ body {
 }
 header {
     background:transparent;
-    color:blue;
+    color:white;
+    font-family: Montserrat;
+    font-size: 50px;
+
 }
 main {
-   background-color: blue;
+   background-color: teal;
+   font-family: Nunito;
+   
 }
 footer {
     background: grey;
 }
 .left-sidebar {
-    background: dodgerblue;
+    background: whitesmoke;
 }
 .right-sidebar {
-    background: dodgerblue;
+    background: whitesmoke;
 }
 
 
@@ -44,6 +49,8 @@ h1,h2,h3,h4,h5,h6,h7,h8,h9{
 .container {
     display: flex;
     flex-direction: column;
+    background-image: url(https://www.progressive.com/lifelanes/wp-content/uploads/2017/12/CarMaintenance_LLheader.jpg);
+    object-fit:scale-down;
 }
 @media all and (min-width: 768px) {
     .container {
