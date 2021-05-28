@@ -6,14 +6,19 @@ const { Pool } = require('pg')
 app.use(express.json())
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
+const port = 3000;
 
 
 
+// const pool = new Pool({
+//     connectionString: process.env.DATABASE_URL,
+//     ssl: {
+//         rejectUnauthorized: false
+//     }
+// });
 const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-        rejectUnauthorized: false
-    }
+    database: 'dealership',
+    server: 5432
 });
 
 app.use(express.static('public'))
@@ -27,7 +32,7 @@ app.use(express.static('public'))
 // })
 app.get('/customer/:name', (req,res) => {
     const customer_name = req.params.name
-    pool.query('SELECT * FROM customer JOIN vehicle ON vehicle.customer_id=customer.id WHERE name=$1;', [customer_name], (err,data) => {
+    pool.query('SELECT name,phone_number,make,model FROM customer JOIN vehicle ON vehicle.customer_id=customer.id WHERE name=$1;', [customer_name], (err,data) => {
         if(err){
             res.status(404).send(err)
           
@@ -78,9 +83,9 @@ app.delete('/customer/:id', (req,res) => {
 })
 
 //get for vehicle with id
-app.get('/vehicle/:id', (req, res) => {
-    const {id} = req.params;
-    pool.query('SELECT * FROM vehicle WHERE id=$1;',[id], (err, data) => {
+app.get('/vehicle/:model', (req, res) => {
+    const {model} = req.params;
+    pool.query('SELECT * FROM vehicle WHERE model=$1;',[model], (err, data) => {
         res.send(data.rows);
     })
 });
@@ -126,8 +131,11 @@ app.delete('/vehicle/:id', (req,res) => {
 });
 
 //listening
-app.listen(process.env.PORT, () => {
-    console.log(`listening on ${process.env.PORT}`);
+// app.listen(process.env.PORT, () => {
+//     console.log(`listening on ${process.env.PORT}`);
+// })
+app.listen(port, () => {
+    console.log('listening on 3000');
 })
 module.exports = app;
     

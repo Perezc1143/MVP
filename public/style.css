@@ -14,35 +14,49 @@ body {
 }
 header {
     background:transparent;
-    color:white;
-    font-family: Montserrat;
-    font-size: 50px;
+    color:rgb(0, 0, 0);
+   
+    font-family: Nunito;
+    font-size: 45px;
 
 }
 main {
    background-color: teal;
-   font-family: Nunito;
-   
+   font-size: 20px;
+   border-style: groove;
+   font-family: Montserrat;
 }
 footer {
-    background: grey;
+    background: transparent;
+    
 }
 .left-sidebar {
-    background: whitesmoke;
+    font-family: Nunito;
+    font-size: 20px;
+    color: teal;
+    background-color: whitesmoke;
+    border-radius: 20px;
+    border-style:groove;
 }
 .right-sidebar {
-    background: whitesmoke;
+    color: black;
+    background-color: whitesmoke;
+    font-family: Nunito;
+    font-size: 20px;
+    border-radius: 35px;
+    border-style:groove;
 }
 
 
-#resultCard {
+/* .{
  border-radius: 20px;
- border-style: solid;
-}
+ border-style:groove;
+} */
 
-h1,h2,h3,h4,h5,h6,h7,h8,h9{
-    font-family: cursive;
-    background: grey;
+.user-info{
+    font-family: Montserrat;
+    font-size: 14px;
+    background: transparent;
 
 }
 
@@ -77,5 +91,6 @@ h1,h2,h3,h4,h5,h6,h7,h8,h9{
     }
     footer {
         order: 4;
+        min-height: 10vh;
     }
 }

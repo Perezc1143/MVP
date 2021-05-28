@@ -17,19 +17,50 @@
 
             </header>
            
-            <main class="main">Customer Info
+            <main class="main">Customer Info:<br>Name:<br>Phone Number:<br>Make:<br>Model:<br>
             </main>
-                <aside class="left-sidebar">
-                    <form class="user info">
-                    <input class="search" type="search">
-                    <button class="submit" type="submit">Search</button>
-                    </form>
-                    <form class="vehicle info">
-                    <input class="search" type="search">
-                    <button class="submit" type="submit">Search</button>
-                    </form>
-                </aside>
-            <aside class="right-sidebar"></aside>
+            <aside class="left-sidebar">
+                Customer Name:
+                <form class="user-info">
+                    <input class="search-customer" type="search">
+                    <button class="submit" type="submit-customer">Search</button>
+                </form>
+                Vehicle Model:
+                <form class="vehicle-info">
+                    <input class="search-vehicle" type="search">
+                    <button class="submit-vehicle" type="submit-vehicle">Search</button>
+                </form>
+                <button type="button" class="newCustomer" onclick="createNewCustomer()">New Customer</button>
+                <!-- <script>
+                    function createNewCustomer(){
+                        var result = document.getElementsByClassName('left-sidebar');
+        var newName = $("<input>", {type:'text',name:'name',value:'name'});
+        newName.appendTo(result);
+        var newPhone = $("<input>", {type:'text',name:'phone'});
+        newPhone.appendTo(result);
+        var newAddress = $("<input>", {type:'text',name:'address'});
+        newAddress.appendTo(result);
+    };
+                </script> -->
+                
+                <form class="newCustomer" type='hidden'>
+                    <div>
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" required>
+                    </div>
+                    <div>
+                        <label for="Phone">Phone Number</label>
+                        <input type="text" name="Phone Number" id="phone-number" required>
+                    </div>
+                    <div>
+                        <label for="Address">Address</label>
+                        <input type="text" name="Address" id="Address" required>
+                    </div>
+                </form>
+            </aside>
+            <aside class="right-sidebar">Vehicle Info:<br>Make:<br>Model:<br>Year<br>Mileage:<br>Under Warranty:
+               
+            </aside>
             <footer></footer>  
     </div>
 
