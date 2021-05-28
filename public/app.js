@@ -1,18 +1,18 @@
  
 $(document).ready(() => {
-    function getCustomer(){
+    // getting customer
         var $button = $('.submit');
         $button.click((e) => {
             var $input = $('.search-customer');
             var data = $input.val();
             $.get(`/customer/${data}`, (res) => {
                 for(var customer of res){
-                  var h1 = $("<h1></h1>", {id: "card-title",text:customer.name});
-                  var h2 = $("<h2></h2>", {id: "card-title",text:customer.address});
-                  var h3 = $("<h3></h3>", {id: "card-title",text:customer.new_customer});
-                  var h4 = $("<h4></h4>", {id: "card-title",text:customer.phone_number});
-                  var h5 = $("<h5></h5>", {id: "card-title",text:customer.make});
-                  var h6 = $("<h6></h6>", {id: "card-title",text:customer.model});
+                  var h1 = $("<div></div>", {id: "card-title",text:customer.name});
+                  var h2 = $("<div></div>", {id: "card-title",text:customer.address});
+                  var h3 = $("<div></div>", {id: "card-title",text:customer.new_customer});
+                  var h4 = $("<div></div>", {id: "card-title",text:customer.phone_number});
+                  var h5 = $("<div></div>", {id: "card-title",text:customer.make});
+                  var h6 = $("<div></div>", {id: "card-title",text:customer.model});
                   var result = document.getElementsByClassName('main');
                   h1.appendTo(result);
                   h2.appendTo(result);
@@ -25,6 +25,7 @@ $(document).ready(() => {
             $(".main").empty();
               e.preventDefault();
           })
+          //getting vehicle info
           var $buttonTwo = $('.submit-vehicle');
           $buttonTwo.click((e) => {
               var $input = $('.search-vehicle');
@@ -47,7 +48,35 @@ $(document).ready(() => {
                 $(".right-sidebar").empty();
                 e.preventDefault();
             })
-        };
+        // making an post 
+        var $newCustomerButton = $('.newCustomer');
+        $newCustomerButton.click((e) => {
+            var $main = $(".main")
+
+            var $inputName = $('#name');
+            var $inputPhone = $('#phone-number');
+            var $inputAddress = $('#address');
+            var $inputNewCust = $('#new-customer')
+            var custName = $inputName.val();
+            var custPhone = $inputPhone.val();
+            var custAddress= $inputAddress.val();
+            var custNew = $inputNewCust.val();
+            var newInput = {
+                name: custName,
+                phone: custPhone,
+                address: custAddress,
+                new_customer : custNew
+            };
+            $.ajax({
+                type:"POST",
+                url: "http://localhost:3000/customer",
+                data: newInput,
+                success: function(newCust){
+                    $main.append("<li> name:" + newCust.name +'phone:'+ newCust.phone +'address:'+ newCust.address +'new customer:' + newCust.new_customer + '</li>')
+                }
+            })
+            e.preventDefault();
+        })
 });
         
         

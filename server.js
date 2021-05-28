@@ -1,25 +1,28 @@
 require('dotenv').config()
 const express = require('express');
 const app = express();
-// const db = require('./db_config.js');
+const db = require('./db_config.js');
 const { Pool } = require('pg')
 app.use(express.json())
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
-const port = 3000;
+// const port = 3000;
 
 
 
-// const pool = new Pool({
-//     connectionString: process.env.DATABASE_URL,
-//     ssl: {
-//         rejectUnauthorized: false
-//     }
-// });
 const pool = new Pool({
-    database: 'dealership',
-    server: 5432
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
+
+
+//local
+// const pool = new Pool({
+//     database: 'dealership',
+//     server: 5432
+// });
 
 app.use(express.static('public'))
 
@@ -130,14 +133,14 @@ app.delete('/vehicle/:id', (req,res) => {
     })
 });
 
-//listening
-// app.listen(process.env.PORT, () => {
-//     console.log(`listening on ${process.env.PORT}`);
-// })
-app.listen(port, () => {
-    console.log('listening on 3000');
+// listening
+app.listen(process.env.PORT, () => {
+    console.log(`listening on ${process.env.PORT}`);
 })
-module.exports = app;
+// app.listen(port, () => {
+//     console.log('listening on 3000');
+// })
+// module.exports = app;
     
     
 
